@@ -1,0 +1,285 @@
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #121212;
+    color: white;
+    overflow-x: hidden;
+    transition: background-color 1s ease;
+}
+
+/* Effet Parallaxe sur la vidéo de fond */
+#background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+    filter: brightness(100%) blur(0); /* Vidéo claire */
+    opacity: 1;
+    transform: translateZ(0); /* Activation de la parallaxe */
+}
+
+/* Loader */
+#loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(18, 18, 18, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.loader-circle {
+    border: 6px solid transparent;
+    border-top: 6px solid #FF4081;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1.5s linear infinite;
+}
+
+p {
+    color: #fff;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Header */
+header {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(120deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)), url('img/header-bg.jpg') no-repeat center center/cover;
+    text-align: center;
+    position: relative;
+}
+
+.header-content {
+    z-index: 10;
+    color: #fff;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.title {
+    font-size: 4em;
+    font-weight: bold;
+    color: #FF4081;
+    margin-bottom: 20px;
+    animation: fadeInGlow 2s ease-out;
+}
+
+.subtitle {
+    font-size: 1.5em;
+    color: #ffffff;
+    animation: fadeInGlow 2s ease-out;
+}
+
+@keyframes fadeInGlow {
+    0% {
+        opacity: 0;
+        text-shadow: 0 0 20px rgba(255, 64, 129, 0.7);
+    }
+    100% {
+        opacity: 1;
+        text-shadow: 0 0 50px rgba(255, 64, 129, 1), 0 0 10px rgba(255, 64, 129, 0.5);
+    }
+}
+
+/* Menu de navigation */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px 0;
+    z-index: 10;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #FF4081;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: bold;
+    transition: transform 0.3s, text-shadow 0.3s;
+}
+
+nav ul li a:hover {
+    color: #fff;
+    transform: scale(1.1);
+    text-shadow: 0 0 10px #FF4081, 0 0 20px #FF4081; /* Effet de brillance */
+}
+
+/* Sections */
+section {
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: auto;
+    opacity: 0;
+    animation: fadeInSection 2s forwards;
+}
+
+@keyframes fadeInSection {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Parallaxe sur le texte */
+header .header-content {
+    position: relative;
+    z-index: 10;
+    animation: parallaxText 5s infinite linear;
+}
+
+@keyframes parallaxText {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
+    100% { transform: translateY(0); }
+}
+
+/* Rule Cards */
+.rule-card, .member-card, .problem-card {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.rule-card:hover, .member-card:hover, .problem-card:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    transform: scale(1.05); /* Zoom léger */
+    box-shadow: 0px 10px 30px rgba(255, 64, 129, 0.8); /* Ombre intense */
+}
+
+/* Membres Cards */
+.members-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.member-card h3 {
+    color: #FF4081;
+}
+
+/* Animation de "typing" pour la section des titres */
+.title {
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 4px solid rgba(255, 64, 129, 0.8);
+    animation: typing 3s steps(30) 1s forwards, blink 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
+}
+
+/* Lumière dynamique de fond */
+body {
+    background: linear-gradient(45deg, #121212, #1a1a1a);
+    animation: lightAnimation 4s infinite alternate;
+}
+
+@keyframes lightAnimation {
+    0% {
+        background: linear-gradient(45deg, #121212, #1a1a1a);
+    }
+    100% {
+        background: linear-gradient(45deg, #1a1a1a, #121212);
+    }
+}
+
+/* Particules animées en arrière-plan */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://www.example.com/particles.png') repeat;
+    pointer-events: none;
+    opacity: 0.2;
+    animation: particles 2s infinite linear;
+}
+
+@keyframes particles {
+    0% { background-position: 0 0; }
+    100% { background-position: 100px 100px; }
+}
+
+/* Effet de particules en arrière-plan */
+section {
+    background-color: rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 1;
+    animation: fadeInSection 2s forwards;
+}
+
+/* Problèmes Cards */
+.problem-card {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, box-shadow 0.3s ease;
+}
+
+.problem-card h3 {
+    color: #FF4081;
+}
+
+.problem-card:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    box-shadow: 0px 10px 30px rgba(255, 64, 129, 0.8); /* Ombre intense au survol */
+    transform: scale(1.05); /* Zoom léger */
+}
